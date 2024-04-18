@@ -1,5 +1,6 @@
 package com.shaddock.service.impl;
 
+import com.shaddock.api.app.vo.UserSocialInformationCountVo;
 import com.shaddock.common.Constants;
 import com.shaddock.common.ServiceResultEnum;
 import com.shaddock.entity.User;
@@ -79,6 +80,16 @@ public class UserServiceImpl implements UserService {
             }
         }
         return ServiceResultEnum.LOGIN_ERROR.getResult();
+    }
+
+    @Override
+    public Boolean logout(Long userId) {
+        return userTokenMapper.deleteByPrimaryKey(userId) > 0;
+    }
+
+    @Override
+    public UserSocialInformationCountVo getUserSocialInformationCount(Long userId) {
+        return userMapper.getUserSocialInformationCount(userId);
     }
 
     private String getNewToken(String timeStr, Long userId) {

@@ -1,5 +1,6 @@
 package com.shaddock.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,11 @@ public class User {
     private String nickName; //昵称
     private String introduceSign; //个性签名
     private String userPic; //用户头像地址
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime createTime;//创建时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime updateTime;//更新时间
+    private Integer followersCount;//粉丝数
+    private Integer subscribeCount;//关注数
+    private Integer momentCount;//动态数
 }

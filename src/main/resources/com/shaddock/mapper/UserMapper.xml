@@ -94,4 +94,11 @@
         from shaddock_cook_user
         where login_name = #{loginName} and password = #{password}
     </select>
+
+    <select id="getUserSocialInformationCount" parameterType="java.lang.Long" resultType="com.shaddock.api.app.vo.UserSocialInformationCountVo">
+        SELECT
+            (SELECT COUNT(*) FROM shaddock_cook_user_followers_relation WHERE user_id = #{userId}) AS followersCount,
+            (SELECT COUNT(*) FROM shaddock_cook_user_subscribe_relation WHERE user_id = #{userId}) AS subscribeCount,
+            (SELECT COUNT(*) FROM shaddock_cook_user_moment_relation WHERE user_id = #{userId}) AS momentCount;
+    </select>
 </mapper>
